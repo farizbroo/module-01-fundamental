@@ -25,7 +25,6 @@ console.log(hasil);
  *          // code
  * }
  */
-
 // Membuat function
 function penjumlahan() {
     let angkaA: number = 2;
@@ -35,9 +34,12 @@ function penjumlahan() {
 
     return hasil;
 }
+
 let printPenjumlahan = penjumlahan();
 console.log(printPenjumlahan);
 
+console.log(penjumlahan());
+console.log(penjumlahan());
 console.log(penjumlahan());
 
 // Function with parameter for reusable

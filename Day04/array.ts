@@ -74,7 +74,7 @@ let output: string = "";
 // 2. Mengakses data didalam array satu per satu
 for (let index: number = 0; index < daftarSiswa.length; index++) {
     const namaSiswa: string = daftarSiswa[index]; // menampung nilai dari tiap index daftarSiswa
-    // 3. Memasukkan datanya kedalam variable output
+// 3. Memasukkan datanya kedalam variable output
     output = output + `${index + 1}. ${namaSiswa} \n`;
 }
 

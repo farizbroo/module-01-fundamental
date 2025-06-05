@@ -1,0 +1,98 @@
+<script>
+const database = [
+    ["Kaos", 1000, 12],
+    ["Jaket", 2000, 14],
+    ["Celana", 5000, 25]
+];
+
+function lihatData() {
+    // 1. Menyiapkan penampung output tampilan data
+    let daftar = "=== Daftar Data ===\n";
+    for (let index = 0; index < database.length; index++) {
+        // 2. Mengakses data didalam array satu per satu
+        const [nama, harga, stok] = database[index];
+        // 3. Menambahkan tiap data kedalam variable output
+        daftar += `${index + 1}. Nama: ${nama}, Harga: Rp${harga}, Stok: ${stok}\n`;
+    }
+    // 4. Menampilkan data output
+    alert(daftar);
+}
+
+function tambahData() {
+    // 1. Menerima input data baru
+    const nama = prompt("Masukkan nama data baru:");
+    const harga = parseInt(prompt("Masukkan harga barang baru:"), 10);
+    const stok = parseInt(prompt("Masukkan stok barang baru:"), 10);
+
+    if (nama && !isNaN(harga) && !isNaN(stok)) {
+        // 2. Menambahkan data ke dalam database
+        database.push([nama, harga, stok]);
+        alert(`Penambahan data ${nama} berhasil.`);
+    } else {
+        alert("Input tidak valid. Data tidak ditambahkan.");
+    }
+}
+
+function perbaruiData() {
+    // 1. Menampilkan daftar menu
+    lihatData();
+    // 2. Menerima input nomor data yang akan dirubah
+    const nomor = parseInt(prompt("Masukkan nomor yang akan dirubah:"), 10) - 1;
+
+    if (nomor >= 0 && nomor < database.length) {
+        const nama = prompt("Masukkan nama perubahan:");
+        const harga = parseInt(prompt("Masukkan harga perubahan:"), 10);
+        const stok = parseInt(prompt("Masukkan stok perubahan:"), 10);
+
+        if (nama && !isNaN(harga) && !isNaN(stok)) {
+            // 3. Merubah data dalam database
+            database[nomor] = [nama, harga, stok];
+            alert(`Perubahan data nomor ${nomor + 1} berhasil.`);
+        } else {
+            alert("Input tidak valid. Perubahan dibatalkan.");
+        }
+    } else {
+        alert("Nomor tidak valid.");
+    }
+}
+
+function hapusData() {
+    // 1. Menampilkan daftar menu
+    lihatData();
+    // 2. Menerima input nomor data yang akan dihapus
+    const nomor = parseInt(prompt("Masukkan nomor yang akan dihapus:"), 10) - 1;
+
+    if (nomor >= 0 && nomor < database.length) {
+        const [nama] = database.splice(nomor, 1)[0];
+        alert(`Anda berhasil menghapus ${nama} dari database.`);
+    } else {
+        alert("Nomor tidak valid. Penghapusan dibatalkan.");
+    }
+}
+
+do {
+    const menu = prompt(`=== Menu Management Data ===
+
+1. Lihat data
+2. Tambah data
+3. Perbarui data
+4. Hapus data
+5. Keluar
+
+Masukkan nomor menu yang dipilih:`);
+
+    if (menu === "1") {
+        lihatData();
+    } else if (menu === "2") {
+        tambahData();
+    } else if (menu === "3") {
+        perbaruiData();
+    } else if (menu === "4") {
+        hapusData();
+    } else if (menu === "5") {
+        break;
+    } else {
+        alert("Pilihan tidak valid. Silakan coba lagi.");
+    }
+} while (true);
+</script>

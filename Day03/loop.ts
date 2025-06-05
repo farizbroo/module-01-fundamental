@@ -40,7 +40,7 @@ while (true) {
 }
 
 /**
- * DO...WHILE
+ * DO...WHILE : fungsinya dijalankan dulu 1 kali, baru cek condition
  * Aturan penulisan :
  * do {
  *      // code
@@ -78,4 +78,5 @@ for (let i: number = 0; i < limit; i++) {
         cetak += `${i} : GANJIL | `
     }
 }
+
 console.log(cetak);

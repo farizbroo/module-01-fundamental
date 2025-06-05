@@ -1,0 +1,88 @@
+<script>
+
+// Inisialisasi menu produk
+let menuProduk = ["Monitor", "CPU", "Mouse", "Printer", "Keyboard"];
+
+// Fungsi untuk menampilkan menu utama
+function tampilkanMenuUtama() {
+    let menuUtama = `=== Menu Produk Toko Komputer ===\n\n1. Lihat Produk\n2. Tambah Produk\n3. Perbarui Produk\n4. Hapus Produk\n5. Keluar\n\n Masukkan nomor menu :`;
+    return parseInt(prompt(menuUtama));
+}
+
+// 1. Fungsi untuk menampilkan daftar produk
+function lihatProduk() {
+    alert(`Produk yang tersedia:\n\n` + menuProduk.map((produk, index) => `${index + 1}. ${produk}`).join("\n"));
+}
+
+// 2. Fungsi untuk menambah produk baru
+function tambahProduk() {
+    let produkBaru = prompt("Masukkan nama produk baru:");
+    if (produkBaru) {
+        menuProduk.push(produkBaru);
+        alert(`Produk '${produkBaru}' berhasil ditambahkan!`);
+    } else {
+        alert("Produk baru tidak boleh kosong.");
+    }
+}
+
+// 3. Fungsi untuk memperbarui produk
+function perbaruiProduk() {
+    lihatProduk();
+    let indeks = parseInt(prompt("Masukkan nomor produk yang ingin diperbarui:")) - 1;
+    if (indeks >= 0 && indeks < menuProduk.length) {
+        let produkBaru = prompt("Masukkan nama produk baru:");
+        if (produkBaru) {
+            let produkLama = menuProduk[indeks];
+            menuProduk[indeks] = produkBaru;
+            alert(`Produk '${produkLama}' diperbarui menjadi '${produkBaru}'.`);
+        } else {
+            alert("Nama produk baru tidak boleh kosong.");
+        }
+    } else {
+        alert("Nomor produk tidak valid.");
+    }
+}
+
+// 4. Fungsi untuk menghapus produk
+function hapusProduk() {
+    lihatProduk();
+    let indeks = parseInt(prompt("Masukkan nomor produk yang ingin dihapus:")) - 1;
+    if (indeks >= 0 && indeks < menuProduk.length) {
+        let produkHapus = menuProduk.splice(indeks, 1);
+        alert(`Produk '${produkHapus}' berhasil dihapus.`);
+    } else {
+        alert("Nomor produk tidak valid.");
+    }
+}
+
+// Program utama
+function main() {
+    let pilih;
+    do {
+        pilih = tampilkanMenuUtama();
+        switch (pilih) {
+            case 1:
+                lihatProduk();
+                break;
+            case 2:
+                tambahProduk();
+                break;
+            case 3:
+                perbaruiProduk();
+                break;
+            case 4:
+                hapusProduk();
+                break;
+            case 5:
+                alert("Terima kasih telah menggunakan program ini.");
+                break;
+            default:
+                alert("Pilihan tidak valid. Silakan coba lagi.");
+        }
+    } while (pilih !== 5);
+}
+
+// Menjalankan program
+main();
+
+</script>

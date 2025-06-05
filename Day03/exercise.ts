@@ -6,7 +6,7 @@ Tulis kode untuk memeriksa apakah angka tersebut ganjil atau genap
 ○ Contoh: 25 → angka ganjil, 2 → angka genap
  */
 
-let cek: number = 4;
+let cek: number = 8;
 
 let hasil: string = ""
 if (cek % 2 === 0) {
@@ -27,18 +27,24 @@ Tulis kode untuk memeriksa apakah angka tersebut merupakan bilangan prima atau b
 ○ Contoh: 6 → 6 bukan bilangan prima
  */
 
-cek = 6;
+let nomor: number = 7;
+let cekPrima: boolean = true;
 
-hasil = ""
-if (cek <= 1) {
-    hasil = `${cek} bukan bilangan prima`;
-}
-for (let i: number = 2; i <= Math.sqrt(cek); i++) {
-    if (cek % i === 0){
-        hasil = `${cek} bukan bilangan prima`;
-    } else {
-        hasil = `${cek} merupakan bilangan prima`;
+if (nomor <= 1) {
+    cekPrima = false;
+} else {
+    for (let i = 2; i <= Math.sqrt(nomor); i++) {
+        if (nomor % i === 0){
+            cekPrima = false;
+            break;
+        }
     }
+}
+
+if (cekPrima) {
+    hasil = (`${nomor} merupakan bilangan prima`);
+} else {
+    hasil = (`${nomor} bukan bilangan prima`);
 }
 
 console.log(hasil);
@@ -53,14 +59,30 @@ Tulis kode untuk mencari jumlah angka 1 sampai N
 ○ Contoh: 3 → 1 + 2 + 3 = 6
  */
 
-let angka: number = 4;
+let angka: number = 3;
 
-let jumlah: string = "";
-for (let i: number = 1; i <= angka; i++) {
-    jumlah += `${i} + `;
+let cetak: number = 0;
+for (let i = 1; i <= angka; i++) {
+    cetak += i;
 }
 
-console.log(jumlah);
+console.log(cetak);
+
+// Cara kedua:
+angka = 6;
+let penjumlahan = 0;
+let expression = ""; // Untuk menyimpan ekspresi penjumlahan
+
+for (let i = 1; i <= angka; i++) {
+  penjumlahan += i;
+  expression += i; // Tambahkan angka ke ekspresi
+  if (i < angka) {
+    expression += " + "; // Tambahkan tanda '+' jika belum angka terakhir
+  }
+}
+
+expression += " = " + penjumlahan; // Tambahkan hasil penjumlahan
+console.log(expression);
 
 /**
  * 4. Write a code to find factorial of a number
@@ -72,15 +94,20 @@ Tulis kode untuk mencari faktorial suatu bilangan
 ○ Contoh: 6! → 6 x 5 x 4 x 3 x 2 x 1 = 720
 */
 
-let a: number = 4;
-let temp: number = a;
+angka = 6;
+let factorial = 1;
+expression = ""; // Untuk menyimpan ekspresi faktorial
 
-let result: string = "";
-for (let i: number = temp; i <= a; a--) {
-    result -= `${temp} x `
+for (let i = angka; i >= 1; i--) {
+  factorial *= i;
+  expression += i; // Tambahkan angka ke ekspresi
+  if (i > 1) {
+    expression += " x "; // Tambahkan tanda 'x' jika belum angka terakhir
+  }
 }
 
-console.log(result);
+expression += " = " + factorial; // Tambahkan hasil faktorial
+console.log(expression);
 
 /**
  * 5. Write a code to print the first N fibonacci numbers
@@ -90,7 +117,15 @@ Tulis kode untuk mencetak N angka Fibonacci pertama
 ○ Contoh: 15 → 610
  */
 
+let N = 15;
+let a = 0, b = 1;
 
+for (let i = 0; i <= N; i++) {
+    console.log(a);
+    let c = a + b;
+    a = b;  
+    b = c;          
+}
 
 
 

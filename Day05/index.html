@@ -1,0 +1,71 @@
+<script>
+const database = ["Kaos", "Jaket", "Celana"];
+
+function lihatData(){
+    // 1. Menyiapkan penampung output tampilan data
+    let daftar = "=== Daftar Data ===\n";
+    for (let index = 0; index < database.length; index++) {
+    // 2. Mengakses data didalam array satu per satu
+    const value = database[index]
+    // 3. Menambahkan tiap data kedalam variable output
+    daftar += `${index + 1}. ${value}\n`
+    }
+    // 4. Menampilkan data output
+    alert(daftar);
+}
+
+function tambahData() {
+    // 1. Menerima input data baru
+    const nama = prompt("Masukkan nama data baru :");
+    // 2. Menambahkan data kedalam database
+    database.push(nama);
+    alert(`Penambahan data ${nama} berhasil`);
+}
+
+function perbaruiData() {
+    // 1. Menampilkan daftar menu
+    lihatData();
+    // 2. Menerima input nomor data yang akan dirubah
+    const nomor = prompt("Masukkan nomor yang akan dirubah :") -1;
+    // 3. Menerima input data baru
+    const nama = prompt("Masukkan nama perubahan :")
+    // 4. Merubah data kedalam database
+    database[nomor] = (nama)
+    alert(`Perubahan data nomor ${nomor + 1} menjadi ${nama} berhasil`);
+}
+
+function hapusData() {
+    // 1. Menampilkan daftar menu
+    lihatData();
+    // 2. Menerima input nomor data yang akan dihapus
+    const nomor = prompt("Masukkan nomor yang akan dihapus :") -1;
+    // 3. Merubah data kedalam database
+    let dataLama = database.splice(nomor, 1);
+    alert(`Anda berhasil menghapus ${dataLama} dari database`);
+}
+
+do {
+    const menu = prompt(`=== Menu Management Data ===
+
+    1. Lihat data
+    2. Tambah data
+    3. Perbarui data
+    4. Hapus data
+    5. Keluar
+    
+    Masukkan nomor menu yang dipilih : `);
+    
+    if (menu === "1") {
+        lihatData(); // nenjalankan fungsi
+    } else if (menu === "2") {
+        tambahData();
+    } else if (menu === "3") {
+        perbaruiData();
+    } else if (menu === "4") {
+        hapusData();
+    } else if (menu === "5") {
+        break;
+    }
+} while (true)
+
+</script>
