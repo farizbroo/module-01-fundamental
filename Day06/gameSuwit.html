@@ -1,0 +1,105 @@
+<script>
+alert(`Selamat datang di GAME SUIT`);
+
+let konfirmasi = true;
+
+// Variabel untuk menampung skor
+let scorePlayer = 0;
+let scoreKomputer = 0;
+let scoreSeri = 0;
+
+do {
+    // Membuat penampungan inputan Player dan Komputer
+    let player = prompt(`   === GAME SUIT ===
+        
+    1. BATU
+    2. GUNTING
+    3. KERTAS
+
+    Tentukan pilihan anda :`);
+
+        // Jika tombol Cancel ditekan
+    if (player === null) {
+        alert(`Terima kasih sudah bermain..!`);
+        break;
+    }
+
+    switch (player) {
+        case "1":
+            player = "BATU";
+            break;
+        case "2":
+            player = "GUNTING";
+            break;
+        case "3":
+            player = "KERTAS";
+            break;
+        default:
+            player = null;
+            break;
+    }
+
+    // Validasi input
+    if (!player) {
+        alert("Pilihan tidak valid, silakan coba lagi!");
+        continue;
+    }
+
+    // Memproses pilihan komputer
+    let komputer = Math.random();
+    if (komputer < 0.33) {
+        komputer = "BATU";
+    } else if (komputer < 0.66) {
+        komputer = "GUNTING";
+    } else {
+        komputer = "KERTAS";
+    }
+
+    // Memproses siapa yang menang dan kalah
+    let hasil = ``;
+    if (player === komputer) {
+        hasil = `SERI`;
+        scoreSeri++;
+    } else if (
+        (player === "BATU" && komputer === "GUNTING") ||
+        (player === "GUNTING" && komputer === "KERTAS") ||
+        (player === "KERTAS" && komputer === "BATU")
+    ) {
+        hasil = `MENANG`;
+        scorePlayer++;
+    } else {
+        hasil = `KALAH`;
+        scoreKomputer++;
+    }
+
+    // Menampilkan hasil
+    alert(
+        "==> Anda memilih : " +
+            player +
+            "\n==> Komputer memilih : " +
+            komputer +
+            "\n==> Maka hasilnya anda : " +
+            hasil
+    );
+
+    // Menampilkan skor
+    alert(
+        "Perolehan Skor :" +
+            `\n==> Skor Player : ${scorePlayer}` +
+            `\n==> Skor Komputer : ${scoreKomputer}` +
+            `\n==> Seri : ${scoreSeri}`
+    );
+
+    // Menampilkan konfirmasi
+    konfirmasi = confirm(`Mau coba lagi..?`);
+} while (konfirmasi);
+
+alert(
+    "Perolehan Skor :" +
+        `\n==> Skor Player : ${scorePlayer}` +
+        `\n==> Skor Komputer : ${scoreKomputer}` +
+        `\n==> Seri : ${scoreSeri}`
+);
+
+alert(`Terima kasih sudah bermain..!`);
+</script>
