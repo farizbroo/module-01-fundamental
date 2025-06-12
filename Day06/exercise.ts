@@ -6,13 +6,14 @@
  * a. Contoh: mixedArray = ["3", 1, "string", null, false, undefined, 2] → 3
  */
 
-const mixedArray = ["3", 4, "string", null, false, undefined, 2]
+const mixedArray = ["3", 4, "string", null, false, undefined, 2];
 
 function penjumlahan(){
-    let angka = 0;
+    let angka: number = 0;
     for (let i = 0; i < mixedArray.length; i++) {
-        if (typeof mixedArray[i] === 'number'){
-            angka += mixedArray[i];
+      const element = mixedArray[i]; 
+        if (typeof element === 'number'){
+            angka += element;
         }
     }
     return angka;
@@ -102,4 +103,4 @@ function findArrayDifference(arr1: number[], arr2: number[]): number[] {
 }
 
 const result = findArrayDifference(arr1, arr2);
-console.log(result); // Output: [1, 2, 6, 7]
+console.log(result);
